@@ -4,6 +4,7 @@ import { COMMISSION_DATA } from "../data/CommissionData";
 import CommissionGroupItem from "../components/CommissionGroupItem/CommissionGroupItem";
 
 const CommissionSelectedScreen = ({ navigation, route }) => {
+  
   const commissionGroups = COMMISSION_DATA.filter(
     (commissionGroup) =>
       commissionGroup.category === route.params.commissionGroupId
@@ -54,7 +55,7 @@ const CommissionSelectedScreen = ({ navigation, route }) => {
           data={commissionGroups}
           renderItem={renderCommissionGroupItem}
           keyExtractor={(item) => item.id}
-          numColumns={1}
+          numColumns={2}
         />
       </View>
       </View>

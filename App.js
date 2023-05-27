@@ -1,7 +1,6 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import React from "react";
-import BottomTabNavigator from "./src/navigation/BottomTabNavigator";
+import PlatformNavigator from "./src/navigation/PlatformNavigator";
 
 
 const App = () => {
@@ -16,9 +15,7 @@ const App = () => {
   if (!loaded) return;
 
   return (
-    <NavigationContainer>
-      <BottomTabNavigator />
-    </NavigationContainer>
+    <PlatformNavigator />
   );
 };
 

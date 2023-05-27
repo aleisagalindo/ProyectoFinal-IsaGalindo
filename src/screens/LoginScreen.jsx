@@ -2,7 +2,7 @@ import { View, Text, Pressable, StyleSheet, TextInput } from "react-native";
 
 const LoginScreen = ({ navigation }) => { 
   return (
-    <View className="flex h-screen pt-[45]">
+    <View className="flex h-full pt-[45]">
       <View style={styles.container}>
         <Pressable className="items-end mt-4 mr-4" onPress={() => 
             navigation.navigate("Select Commission Screen")
@@ -21,27 +21,27 @@ const LoginScreen = ({ navigation }) => {
           <TextInput
             placeholder=" Username"
             style={styles.fontFamily}
-            className="pl-4 h-[50] w-[375] bg-gray-300 rounded"
+            className="pl-4 h-[50] w-[375] bg-gray-300 rounded-xl"
           />
           <TextInput
             placeholder=" Password"
             style={styles.fontFamily}
-            className="mt-5 pl-4 h-[50] w-[375] bg-gray-300 rounded"
+            className="mt-5 pl-4 h-[50] w-[375] bg-gray-300 rounded-xl"
           />
         </View>
         <View className="mt-[40]">
-          <Pressable className="items-end mr-5 rounded active:bg-pink-400">
+          <Pressable className="items-end mr-5">
             <Text style={styles.fontFamily} className="text-gray-400">
               Forgot Password?
             </Text>
           </Pressable>
-          <Pressable className="mt-6 ml-5 mr-5 p-4 rounded bg-white active:bg-gray-300">
+          <Pressable className="mt-6 ml-5 mr-5 p-4 rounded-xl bg-white active:bg-gray-300">
             <Text style={styles.fontFamily} className="text-center">
               Login
             </Text>
           </Pressable>
-          <Pressable className="mt-4 ml-5 mr-5 p-4 rounded bg-pink-300 active:bg-pink-400">
-            <Text style={styles.fontFamily} className="text-center">
+          <Pressable className="mt-4 ml-5 mr-5 p-4 rounded-xl bg-pink-400 active:bg-pink-500">
+            <Text style={styles.fontFamily} className="text-center text-white">
               Register
             </Text>
           </Pressable>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   principalText: {
-    fontFamily: "PoppinsSemiBold",
+    fontFamily: "PoppinsMedium",
     color: "white",
   },
   fontFamily: {

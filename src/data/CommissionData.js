@@ -3,7 +3,7 @@ export const COMMISSION_DATA = [
         id: "1",
         category: "1",
         name: "1A",
-        greeting: "Hello! And welcome to",
+        greeting: "Hello! And welcome to Commission",
         link: "https://meet.google.com/ymy-zoqh-yyv",
         color: "#f0a7fc"
     },
@@ -11,7 +11,7 @@ export const COMMISSION_DATA = [
         id: "2",
         category: "1",
         name: "1B",
-        greeting: "Hello! And welcome to",
+        greeting: "Hello! And welcome to Commission",
         link: "https://meet.google.com/ymy-zoqh-yyv",
         color: "#f0a7fc"
     },
@@ -19,7 +19,7 @@ export const COMMISSION_DATA = [
         id: "3",
         category: "2",
         name: "2A",
-        greeting: "Hello! And welcome to",
+        greeting: "Hello! And welcome to Commission",
         link: "https://meet.google.com/ymy-zoqh-yyv",
         color: "#fcda83"
     },
@@ -27,7 +27,7 @@ export const COMMISSION_DATA = [
         id: "4",
         category: "2",
         name: "2B",
-        greeting: "Hello! And welcome to",
+        greeting: "Hello! And welcome to Commission",
         link: "https://meet.google.com/ymy-zoqh-yyv",
         color: "#fcda83"
     },
@@ -35,7 +35,7 @@ export const COMMISSION_DATA = [
         id: "5",
         category: "3",
         name: "3A",
-        greeting: "Hello! And welcome to",
+        greeting: "Hello! And welcome to Commission",
         link: "https://meet.google.com/ymy-zoqh-yyv",
         color: "#faa352"
     },
@@ -43,7 +43,7 @@ export const COMMISSION_DATA = [
         id: "6",
         category: "3",
         name: "3B",
-        greeting: "Hello! And welcome to",
+        greeting: "Hello! And welcome to Commission",
         link: "https://meet.google.com/ymy-zoqh-yyv",
         color: "#faa352"
     },
@@ -51,7 +51,7 @@ export const COMMISSION_DATA = [
         id: "7",
         category: "4",
         name: "4A",
-        greeting: "Hello! And welcome to",
+        greeting: "Hello! And welcome to Commission",
         link: "https://meet.google.com/ymy-zoqh-yyv",
         color: "#4afff0"
     },
@@ -59,7 +59,7 @@ export const COMMISSION_DATA = [
         id: "8",
         category: "4",
         name: "4B",
-        greeting: "Hello! And welcome to",
+        greeting: "Hello! And welcome to Commission",
         link: "https://meet.google.com/ymy-zoqh-yyv",
         color: "#4afff0"
     },

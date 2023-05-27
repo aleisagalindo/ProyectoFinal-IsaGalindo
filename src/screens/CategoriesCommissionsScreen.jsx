@@ -3,6 +3,8 @@ import React from 'react'
 import CommissionsCategoriesItem from '../components/CommissionsCategoriesItem/CommissionsCategoriesItem';
 import { COMMISSIONS_CATEGORIES } from "../data/CommissionsCategories";
 
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
+
 const SelectCommissionScreen = ({ navigation }) => {
 
   const handleSelectedCommission = item => {

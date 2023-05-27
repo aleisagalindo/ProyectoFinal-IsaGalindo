@@ -1,14 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 import React from 'react'
+import BottomTabNavigator from '../navigation/BottomTabNavigator'
 
 
-const CommissionGroupScreen = ({navigation, route}) => {
+const CommissionGroupScreen = ({route}) => {
 
   
   const commission = route.params.commissionGroup
   return (
-    <View>
-      <Text>{commission.greeting} Commission {commission.name}</Text>
+    <View style={{flex:1}}>
+      <BottomTabNavigator data={commission} />
     </View>
 
   )
