@@ -2,6 +2,9 @@ import { useFonts } from "expo-font";
 import React from "react";
 import PlatformNavigator from "./src/navigation/PlatformNavigator";
 
+import { Provider } from "react-redux";
+import store from "./src/store";
+
 
 const App = () => {
   const [loaded] = useFonts({
@@ -15,9 +18,10 @@ const App = () => {
   if (!loaded) return;
 
   return (
-    <PlatformNavigator />
+    <Provider store={store}>
+      <PlatformNavigator />
+    </Provider>
   );
 };
 
 export default App;
-

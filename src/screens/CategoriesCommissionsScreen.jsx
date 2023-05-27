@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native'
 import React from 'react'
 import CommissionsCategoriesItem from '../components/CommissionsCategoriesItem/CommissionsCategoriesItem';
-import { COMMISSIONS_CATEGORIES } from "../data/CommissionsCategories";
 
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
+import { useDispatch, useSelector } from "react-redux";
+import { selectedCategory } from "../store/actions/category.action";
 
 const SelectCommissionScreen = ({ navigation }) => {
 
+  const categories = useSelector(state => state.categories.categories);
+  
   const handleSelectedCommission = item => {
     navigation.navigate("Selected Commission Screen", {
       commissionGroupId: item.id,
@@ -41,7 +43,7 @@ const SelectCommissionScreen = ({ navigation }) => {
         </Text>
         <View>
           <FlatList 
-          data={COMMISSIONS_CATEGORIES}
+          data={categories}
           renderItem={renderCommissionsCategoryScreen}
           keyExtractor={item => item.id}
           />
