@@ -52,6 +52,7 @@ export default function PlatformNavigator() {
           component={CommissionGroupScreen}
           options={({ route }) => ({
             title: `Commission ${route.params.name}`,
+            headerShown: false,
           })}
         />
       </Stack.Navigator>
