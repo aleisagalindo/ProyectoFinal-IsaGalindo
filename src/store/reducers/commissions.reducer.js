@@ -1,26 +1,26 @@
-import { FILTERED_COMMISSION, SELECTED_COMMISSION } from "../actions/commissions.action";
+import { FILTERED_COMMISSION_GROUP, SELECTED_COMMISSION_GROUP } from "../actions/commissions.action";
 
 import { COMMISSION_DATA } from "../../data/CommissionData";
 
 const initialState = {
   commissions: COMMISSION_DATA,
-  filteredCommission: [],
+  filteredCommissionGroup: [],
   selected: null,
 };
 
 const CommissionReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SELECTED_COMMISSION:
+    case SELECTED_COMMISSION_GROUP:
       return {
         ...state,
         selected: state.commissions.find(
-          commission => commission.id === action.commissionId
+          commission => commission.id === action.commissionGroupId
         ),
       };
-    case FILTERED_COMMISSION:
+    case FILTERED_COMMISSION_GROUP:
       return {
         ...state,
-        filteredCommission: state.commissions.filter(
+        filteredCommissionGroup: state.commissions.filter(
           commission => commission.category === action.categoryId
         ),
       };

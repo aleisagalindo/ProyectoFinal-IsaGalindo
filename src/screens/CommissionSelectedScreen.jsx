@@ -1,18 +1,27 @@
 import { StyleSheet, Text, View, FlatList, Image, Pressable } from "react-native";
-import React from "react";
-import { COMMISSION_DATA } from "../data/CommissionData";
+import React, {useEffect} from "react";
 import CommissionGroupItem from "../components/CommissionGroupItem/CommissionGroupItem";
+import { useSelector, useDispatch } from "react-redux";
+import { filteredCommissionGroup, selectedCommissionGroup } from "../store/actions/commissions.action";
 
 const CommissionSelectedScreen = ({ navigation, route }) => {
+  const filteredCommissions = useSelector(state => state.commissions.filteredCommissionGroup);
+  const commissionSelected = useSelector(state => state.categories.selected);
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+     dispatch(filteredCommissionGroup(commissionSelected.id))
+  }, []);
   
-  const commissionGroups = COMMISSION_DATA.filter(
-    (commissionGroup) =>
-      commissionGroup.category === route.params.commissionGroupId
-  );
+
+  // const commissionGroups = COMMISSION_DATA.filter(
+  //   (commissionGroup) =>
+  //     commissionGroup.category === route.params.commissionGroupId
+  // );
 
   const handleSelectedCommissionGroup = (item) => {
+    dispatch(selectedCommissionGroup(item.id))
     navigation.navigate("Select Commission Group Screen", {
-      commissionGroup: item,
       name: item.name,
     });
   };
@@ -52,7 +61,7 @@ const CommissionSelectedScreen = ({ navigation, route }) => {
       </View>
       <View>
         <FlatList
-          data={commissionGroups}
+          data={filteredCommissions}
           renderItem={renderCommissionGroupItem}
           keyExtractor={(item) => item.id}
           numColumns={2}

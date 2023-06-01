@@ -1,12 +1,12 @@
-export const SELECTED_COMMISSION = "SELECTED_COMMISSION";
-export const FILTERED_COMMISSION = "FILTERED_COMMISSION";
+export const SELECTED_COMMISSION_GROUP = "SELECTED_COMMISSION_GROUP";
+export const FILTERED_COMMISSION_GROUP = "FILTERED_COMMISSION_GROUP";
 
-export const selectedCommission = id => ({
-  type: SELECTED_COMMISSION,
-  commissionId: id,
+export const selectedCommissionGroup = id => ({
+  type: SELECTED_COMMISSION_GROUP,
+  commissionGroupId: id,
 });
 
-export const filteredCommission = id => ({
-  type: FILTERED_COMMISSION,
+export const filteredCommissionGroup = id => ({
+  type: FILTERED_COMMISSION_GROUP,
   categoryId: id,
 });

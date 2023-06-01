@@ -8,10 +8,12 @@ import { selectedCategory } from "../store/actions/category.action";
 const SelectCommissionScreen = ({ navigation }) => {
 
   const categories = useSelector(state => state.categories.categories);
+  const dispatch = useDispatch();
   
   const handleSelectedCommission = item => {
+    dispatch(selectedCategory(item.id));
     navigation.navigate("Selected Commission Screen", {
-      commissionGroupId: item.id,
+      // commissionGroupId: item.id,
       name: item.title,
     });
   };
