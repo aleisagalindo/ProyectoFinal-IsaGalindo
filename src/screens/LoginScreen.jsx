@@ -1,12 +1,98 @@
-import { View, Text, Pressable, StyleSheet, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  Pressable,
+  StyleSheet,
+  TextInput,
+  Alert,
+} from "react-native";
+import { useDispatch } from "react-redux";
+import React, { useCallback, useReducer, useState, useEffect } from "react";
+import { signUp } from "../store/actions/auth.action";
+import Input from "../components/Input";
 
-const LoginScreen = ({ navigation }) => { 
+
+const FORM_INPUT_UPDATE = "FORM_INPUT_UPDATE";
+
+const formReducer = (state, action) => {
+  console.log(action);
+  if (action.type === FORM_INPUT_UPDATE) {
+    const updatedValues = {
+      ...state.inputValues,
+      [action.input]: action.value,
+    };
+    const updatedValidities = {
+      ...state.inputValidities,
+      [action.input]: action.isValid,
+    };
+    let updatedFormIsValid = true;
+    for (const key in updatedValidities) {
+      updatedFormIsValid = updatedFormIsValid && updatedValidities[key];
+    }
+    return {
+      inputValues: updatedValues,
+      inputValidities: updatedValidities,
+      formIsValid: updatedFormIsValid,
+    };
+  }
+  return state;
+};
+
+const LoginScreen = () => {
+  const dispatch = useDispatch();
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (error) {
+      Alert.alert("A ocurrido un error", error, [{ text: "Ok" }]);
+    }
+  }, [error]);
+
+  const [formState, dispatchFormState] = useReducer(formReducer, {
+    inputValues: {
+      email: "",
+      password: "",
+    },
+    inputValidities: {
+      email: false,
+      password: false,
+    },
+    formIsValid: false,
+  });
+
+  const handleSignUp = () => {
+    //dispatch(signup(email, password))
+    if (formState.formIsValid) {
+      dispatch(
+        signUp(formState.inputValues.email, formState.inputValues.password)
+      );
+    } else {
+      Alert.alert("formulaio invalido", "Ingresa email y usuario valido", [
+        { text: "ok" },
+      ]);
+    }
+  };
+
+  const onInputChangeHandler = useCallback(
+    (inputIdentifier, inputValue, inputValidity) => {
+      console.log(inputIdentifier, inputValue, inputValidity);
+      dispatchFormState({
+        type: FORM_INPUT_UPDATE,
+        value: inputValue,
+        isValid: inputValidity,
+        input: inputIdentifier,
+      });
+    },
+    [dispatchFormState]
+  );
+
   return (
     <View className="flex h-full pt-[45]">
       <View style={styles.container}>
-        <Pressable className="items-end mt-4 mr-4" onPress={() => 
-            navigation.navigate("Select Commission Screen")
-        }>
+        <Pressable
+          className="items-end mt-4 mr-4"
+          onPress={() => navigation.navigate("Select Commission Screen")}
+        >
           <Text style={styles.fontFamily} className="text-white">
             SKIP
           </Text>
@@ -18,15 +104,33 @@ const LoginScreen = ({ navigation }) => {
           Hello!
         </Text>
         <View className="mt-[40] ml-5">
-          <TextInput
-            placeholder=" Username"
+          <Input
+            id="email"
+            label="Email"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            requiered
+            email
+            errorText={"Please enter a valid email"}
+            onInputChange={onInputChangeHandler}
+            initialValue=""
+            placeholder=" Email"
             style={styles.fontFamily}
-            className="pl-4 h-[50] w-[375] bg-gray-300 rounded-xl"
           />
-          <TextInput
+          <Input
+            id="password"
+            label="Password"
+            keyboardType="default"
+            autoCapitalize="none"
+            autoCorrect={false}
+            requiered
+            password
+            secureTextEntry
+            errorText={"Please enter a valid password"}
+            onInputChange={onInputChangeHandler}
+            initialValue=""
             placeholder=" Password"
             style={styles.fontFamily}
-            className="mt-5 pl-4 h-[50] w-[375] bg-gray-300 rounded-xl"
           />
         </View>
         <View className="mt-[40]">
@@ -40,7 +144,10 @@ const LoginScreen = ({ navigation }) => {
               Login
             </Text>
           </Pressable>
-          <Pressable className="mt-4 ml-5 mr-5 p-4 rounded-xl bg-pink-400 active:bg-pink-500">
+          <Pressable
+            className="mt-4 ml-5 mr-5 p-4 rounded-xl bg-pink-400 active:bg-pink-500"
+            onPress={handleSignUp}
+          >
             <Text style={styles.fontFamily} className="text-center text-white">
               Register
             </Text>

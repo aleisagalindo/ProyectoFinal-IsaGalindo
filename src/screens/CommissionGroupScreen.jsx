@@ -3,13 +3,11 @@ import React from 'react'
 import BottomTabNavigator from '../navigation/BottomTabNavigator'
 
 
-const CommissionGroupScreen = ({route}) => {
+const CommissionGroupScreen = () => {
 
-  // Este const commission ya no iría aquí
-  const commission = route.params.commissionGroup
   return (
     <View style={{flex:1}}>
-      <BottomTabNavigator data={commission} />
+      <BottomTabNavigator />
     </View>
 
   )

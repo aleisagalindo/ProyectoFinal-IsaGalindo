@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, Pressable } from 'react-native'
+import { StyleSheet, Text, View, FlatList, Pressable, Image } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
@@ -10,6 +10,17 @@ const commissionGroup = useSelector(state => state.commissions.selected)
   return (
     <View className="h-full pt-[45]">
       <View className="bg-black h-full">
+        <View>
+        <Image className="rounded-full ml-5 mt-10" style={styles.user}
+        source={{
+          uri: "https://scontent.ftuc4-2.fna.fbcdn.net/v/t39.30808-6/335427565_904149960842138_7611294244057589043_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=zkjksfJeWkEAX-3VM9M&_nc_ht=scontent.ftuc4-2.fna&oh=00_AfCufC20Y554XvQsEtUadUwuvdNu9k0mlc-Me5Kr83FCfg&oe=646FFE8B"
+        }}
+        />
+        <Text style={styles.userName} className="mt-2 ml-7 text-white text-xs">
+          Ale Galindo
+        </Text>
+        </View>
+      
       <View className="mt-10">
          <Text style={styles.titleText} className="ml-5 mr-5 text-white text-3xl">{commissionGroup.greeting} {commissionGroup.name}</Text>
       </View>
@@ -45,6 +56,13 @@ const commissionGroup = useSelector(state => state.commissions.selected)
 export default CommissionGroupSelectedScreen
 
 const styles = StyleSheet.create({
+  user: {
+    width: 80,
+    height: 80,
+  },
+  userName: {
+    fontFamily: "PoppinsLight",
+  },
   fontFamily: {
     fontFamily: "PoppinsSemiBold",
   },
